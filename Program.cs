@@ -43,7 +43,7 @@ namespace stayawake
             }
             finally
             {
-                Console.WriteLine("Stopping stay awake");
+                Console.WriteLine("Stopping stayawake");
                 Console.WriteLine($"Executing SetThreadExecutionState(ES_CONTINUOUS)");
 
                 SetThreadExecutionState(ExecutionState.ES_CONTINUOUS);
@@ -52,7 +52,7 @@ namespace stayawake
 
         /// <summary>keep the computer awake</summary>
         /// <param name="awakeMode">Away ==> Enable away mode ; Display ==> Keep the display on ; System ==> Do not sleep</param>
-        static int Main(AwakeMode awakeMode)
+        static int Main(AwakeMode awakeMode = AwakeMode.Display)
         {
             switch(awakeMode)
             {
