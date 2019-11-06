@@ -1,18 +1,32 @@
 # stayawake
 
-## Background
-Keep a Windows Computer awake akin to [Amphetamine](https://apps.apple.com/us/app/amphetamine/id937984704?mt=12).
+Keep a Windows computer awake using the [win32 API](https://docs.microsoft.com/en-us/windows/win32/apiindex/windows-api-list).
 
-Originally inspired by [this gist](https://gist.github.com/CMCDragonkai/bf8e8b7553c48e4f65124bc6f41769eb).
+## Reason for Development
+
+Experiment with [DragonFruit](https://github.com/dotnet/command-line-api/wiki/DragonFruit-overview) console app in [C#](https://docs.microsoft.com/en-us/dotnet/csharp/). 
+
+Other planned experiments include:
+- Explore [.NET Core 3](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0) features
+    - [Single file executable](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0#single-file-executables)
+    - [Assembly linking](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0#assembly-linking)
+    - [ReadyToRun](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)
+- Distribution
+    - [.NET Core global tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools)
+    - [Nuget](https://www.nuget.org/)
+    - [Github Package Registry](https://help.github.com/en/github/managing-packages-with-github-package-registry/configuring-nuget-for-use-with-github-package-registry)
+- Building
+    - [Azure Dev Ops](https://azure.microsoft.com/en-us/services/devops/)
+    - [Cross compiling](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog)
 
 
 ## Colophon
 
 ### Requirements
-Built with [.NET Core 3](https://dotnet.microsoft.com/download/dotnet-core/3.0)
+Built with [.NET Core 3](https://dotnet.microsoft.com/download/dotnet-core/3.0).
 
 
-### Setup
+### Initial Setup
 
 Create a new project.
 
@@ -20,32 +34,43 @@ Create a new project.
 dotnet new console -o stayawake
 ```
 
-Add dependency.
+Add dependency for [System.CommandLine.DragonFruit](https://www.nuget.org/packages/System.CommandLine.DragonFruit).
 
 ```sh
 dotnet add package System.CommandLine.DragonFruit --version 0.3.0-alpha.19405.1
 ```
 
-Add `System.CommandLine.DragonFruit` within `Program.cs`.
+### Build, Run, Test
 
-```cs
-using System.CommandLine.DragonFruit;
-```
+#### Build
 
-Build.
-
-```
+```sh
 dotnet build
 ```
 
-Test.
+#### Run
 
+```sh
+# Help 
+dotnet run -- --help
+
+# Keep display on
+dotnet run -- --awake-mode Display
 ```
-dotnet run -- --verbose --flavor "chocolate" --count 4
+
+#### Test
+
+In order to test, open PowerShell with elevated (admin) privleges.  After executing the program, run the following.
+
+```sh
+powercfg -requests
 ```
 
 ### References
-- [Hanselman blog post](https://www.hanselman.com/blog/DragonFruitAndSystemCommandLineIsANewWayToThinkAboutNETConsoleApps.aspx)
-- [Platform Invoke Example](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/interop/how-to-use-platform-invoke-to-play-a-wave-file)
-- [pinvoke.NET for SetThreadExecutionState](https://www.pinvoke.net/default.aspx/kernel32/SetThreadExecutionState.html)
-- [win32 API for SetThreadExecutionState](https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate?redirectedfrom=MSDN)
+- `System.CommandLine.DragonFruit`
+    - [Hanselman blog post](https://www.hanselman.com/blog/DragonFruitAndSystemCommandLineIsANewWayToThinkAboutNETConsoleApps.aspx)
+    - [DragonFruit Wiki](https://github.com/dotnet/command-line-api/wiki/DragonFruit-overview)
+- `SetThreadExecutionState`
+    - [pinvoke.NET for SetThreadExecutionState](https://www.pinvoke.net/default.aspx/kernel32/SetThreadExecutionState.html)
+    - [win32 API for SetThreadExecutionState](https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate?redirectedfrom=MSDN)
+    - [Platform Invoke Example](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/interop/how-to-use-platform-invoke-to-play-a-wave-file)
