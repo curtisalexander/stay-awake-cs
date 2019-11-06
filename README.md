@@ -25,6 +25,19 @@ Other planned experiments include:
 ### Requirements
 Built with [.NET Core 3](https://dotnet.microsoft.com/download/dotnet-core/3.0).
 
+Version information compiled using [versions.ps1]() script.
+
+```
+Windows version: 10.0.19008.0
+
+dotnet core version: 3.1.100-preview1-014459
+
+Package versions:
+Project 'stayawake' has the following package references
+   [netcoreapp3.1]:
+   Top-level Package                     Requested             Resolved
+   > System.CommandLine.DragonFruit      0.3.0-alpha.19405.1   0.3.0-alpha.19405.1
+```
 
 ### Initial Setup
 
