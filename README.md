@@ -25,7 +25,7 @@ Other planned experiments include:
 ### Requirements
 Built with [.NET Core 3](https://dotnet.microsoft.com/download/dotnet-core/3.0).
 
-Version information compiled using [versions.ps1]() script.
+Version information compiled using [versions.ps1](https://github.com/curtisalexander/stayawake/blob/master/versions.ps1) script.
 
 ```
 Windows version: 10.0.19008.0
