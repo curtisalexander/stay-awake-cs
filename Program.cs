@@ -17,9 +17,11 @@ namespace stayawake
     }
     class Program
     {
+        // Validation performed with powercfg -requests
+
         // https://www.pinvoke.net/default.aspx/kernel32/SetThreadExecutionState.html
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        internal static extern ExecutionState SetThreadExecutionState(ExecutionState esFlags);
+        private static extern ExecutionState SetThreadExecutionState(ExecutionState esFlags);
 
         private static void SetMode(AwakeMode aMode, ExecutionState eState)
         {
@@ -48,11 +50,8 @@ namespace stayawake
             }
         }
 
-        // powercfg -requests
-        /// <summary>keep 
-        /// <para>stayawake keeps the computer awake</para>
-        /// </summary>
-        /// <param name="awakeMode">Which mode to use?</param>
+        /// <summary>keep the computer awake</summary>
+        /// <param name="awakeMode">Away ==> Enable away mode ; Display ==> Keep the display on ; System ==> Do not sleep</param>
         static int Main(AwakeMode awakeMode)
         {
             switch(awakeMode)
