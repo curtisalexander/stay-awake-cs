@@ -7,17 +7,20 @@ Keep a Windows computer awake using the [win32 API](https://docs.microsoft.com/e
 Experiment with [DragonFruit](https://github.com/dotnet/command-line-api/wiki/DragonFruit-overview) console app in [C#](https://docs.microsoft.com/en-us/dotnet/csharp/). 
 
 Other planned experiments include:
-- Explore [.NET Core 3](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0) features
-    - [Single file executable](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0#single-file-executables)
-    - [Assembly linking](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0#assembly-linking)
-    - [ReadyToRun](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)
-- Distribution
-    - [.NET Core global tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools)
-    - [Nuget](https://www.nuget.org/)
-    - [Github Package Registry](https://help.github.com/en/github/managing-packages-with-github-package-registry/configuring-nuget-for-use-with-github-package-registry)
-- Building
-    - [Azure Dev Ops](https://azure.microsoft.com/en-us/services/devops/)
-    - [Cross compiling](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog)
+
+#### Explore [.NET Core 3](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0) features
+[x] [Single file executable](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0#single-file-executables)
+[x] [Assembly linking](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0#assembly-linking)
+[ ] [ReadyToRun](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)
+
+#### Distribution
+[ ] [.NET Core global tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools)
+[ ] [Nuget](https://www.nuget.org/)
+[ ] [Github Package Registry](https://help.github.com/en/github/managing-packages-with-github-package-registry/configuring-nuget-for-use-with-github-package-registry)
+
+#### Building
+[ ] [Azure Dev Ops](https://azure.microsoft.com/en-us/services/devops/)
+[ ] [Cross compiling](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog)
 
 
 ## Colophon
@@ -43,13 +46,13 @@ Project 'stayawake' has the following package references
 
 Create a new project.
 
-```sh
+```pwsh
 dotnet new console -o stayawake
 ```
 
 Add dependency for [System.CommandLine.DragonFruit](https://www.nuget.org/packages/System.CommandLine.DragonFruit).
 
-```sh
+```pwsh
 dotnet add package System.CommandLine.DragonFruit --version 0.3.0-alpha.19405.1
 ```
 
@@ -57,13 +60,13 @@ dotnet add package System.CommandLine.DragonFruit --version 0.3.0-alpha.19405.1
 
 #### Build
 
-```sh
+```pwsh
 dotnet build
 ```
 
 #### Run
 
-```sh
+```pwsh
 # Help 
 dotnet run -- --help
 
@@ -75,8 +78,57 @@ dotnet run -- --awake-mode Display
 
 In order to test, open PowerShell with elevated (admin) privleges.  After executing the program, run the following.
 
-```sh
+```pwsh
 powercfg -requests
+```
+
+#### Publish
+
+For a single file exe, add the following to the `stayawake.csproj` file.
+
+```xml
+<PropertyGroup>
+    <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+    <PublishSingleFile>true</PublishSingleFile>
+</PropertyGroup>
+```
+
+For assembly linking, add the following to the `stayawake.csproj` file.
+
+```xml
+<PropertyGroup>
+   <PublishTrimmed>true</PublishTrimmed>
+</PropertyGroup>
+```
+
+For a ReadyToRun image, add the following to the `stayawake.csproj` file.
+
+```xml
+<PropertyGroup>
+  <PublishReadyToRun>true</PublishReadyToRun>
+</PropertyGroup>
+```
+
+To publish, run the following.
+
+```pwsh
+dotnet publish -c Release
+```
+
+To test the exe, run the following.
+
+```pwsh
+.\bin\Release\netcoreapp3.1\win10-x64\stayawake.exe --help
+```
+
+Finally, to check the size of the exe, run the following.
+
+```pwsh
+# In KB
+(Get-ChildItem -File .\bin\Release\netcoreapp3.1\win10-x64\stayawake.exe).Length/1KB
+
+# In MB
+(Get-ChildItem -File .\bin\Release\netcoreapp3.1\win10-x64\stayawake.exe).Length/1KB
 ```
 
 ### References
