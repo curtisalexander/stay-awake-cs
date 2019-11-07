@@ -6,6 +6,7 @@
     <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
     <PublishSingleFile>true</PublishSingleFile>
     <PublishTrimmed>true</PublishTrimmed>
+    <RootNamespace>stay_awake</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

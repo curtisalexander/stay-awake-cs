@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace stayawake
+namespace stay_awake
 {
     internal enum AwakeMode { Away, Display, System }
 
