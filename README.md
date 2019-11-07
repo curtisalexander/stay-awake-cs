@@ -4,23 +4,24 @@ Keep a Windows computer awake using the [win32 API](https://docs.microsoft.com/e
 
 ## Reason for Development
 
-Experiment with [DragonFruit](https://github.com/dotnet/command-line-api/wiki/DragonFruit-overview) console app in [C#](https://docs.microsoft.com/en-us/dotnet/csharp/). 
+- [x] Experiment with [DragonFruit](https://github.com/dotnet/command-line-api/wiki/DragonFruit-overview) console app in [C#](https://docs.microsoft.com/en-us/dotnet/csharp/). 
+- [ ] Experiment with [System.CommandLine](https://github.com/dotnet/command-line-api/wiki/Your-first-app-with-System.CommandLine) console app in [C#](https://docs.microsoft.com/en-us/dotnet/csharp/).
 
 Other planned experiments include:
 
 #### Explore [.NET Core 3](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0) features
-[x] [Single file executable](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0#single-file-executables)
-[x] [Assembly linking](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0#assembly-linking)
-[ ] [ReadyToRun](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)
+- [x] [Single file executable](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0#single-file-executables)
+- [x] [Assembly linking](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0#assembly-linking)
+- [ ] [ReadyToRun](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)
 
 #### Distribution
-[ ] [.NET Core global tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools)
-[ ] [Nuget](https://www.nuget.org/)
-[ ] [Github Package Registry](https://help.github.com/en/github/managing-packages-with-github-package-registry/configuring-nuget-for-use-with-github-package-registry)
+- [ ] [.NET Core global tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools)
+- [ ] [Nuget](https://www.nuget.org/)
+- [ ] [Github Package Registry](https://help.github.com/en/github/managing-packages-with-github-package-registry/configuring-nuget-for-use-with-github-package-registry)
 
 #### Building
-[ ] [Azure Dev Ops](https://azure.microsoft.com/en-us/services/devops/)
-[ ] [Cross compiling](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog)
+- [ ] [Azure Dev Ops](https://azure.microsoft.com/en-us/services/devops/)
+- [ ] [Cross compiling](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog)
 
 
 ## Colophon
