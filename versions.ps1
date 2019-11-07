@@ -6,4 +6,4 @@ Write-Host "`ndotnet core version: $(dotnet --version)"
 
 # Packages
 Write-Host "`nPackage versions:"
-dotnet list stayawake.csproj package
+dotnet list (Get-ChildItem -Filter *.csproj).Name package
