@@ -23,15 +23,21 @@ namespace stay_awake
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern ExecutionState SetThreadExecutionState(ExecutionState esFlags);
 
-        private static void SetMode(AwakeMode aMode, ExecutionState eState)
+        private static void SetMode(AwakeMode aMode, ExecutionState eState, bool dRun)
         {
             Console.WriteLine($"Staying awake with mode: {aMode}");
 
             try
             {
-                Console.WriteLine($"Executing SetThreadExecutionState({eState} | ES_CONTINUOUS)");
 
-                SetThreadExecutionState(eState | ExecutionState.ES_CONTINUOUS);
+                if (dRun)
+                {
+                    Console.WriteLine($"Executing SetThreadExecutionState({eState} | ES_CONTINUOUS)");
+                }
+                else
+                {
+                    SetThreadExecutionState(eState | ExecutionState.ES_CONTINUOUS);
+                }
 
                 Console.WriteLine("Press ``Enter`` to stop staying awake");
                 var _ = Console.ReadLine();
@@ -44,26 +50,34 @@ namespace stay_awake
             finally
             {
                 Console.WriteLine("Stopping stayawake");
-                Console.WriteLine($"Executing SetThreadExecutionState(ES_CONTINUOUS)");
 
-                SetThreadExecutionState(ExecutionState.ES_CONTINUOUS);
+                if (dRun)
+                {
+                    Console.WriteLine($"Executing SetThreadExecutionState(ES_CONTINUOUS)");
+                }
+                else
+                {
+                    SetThreadExecutionState(ExecutionState.ES_CONTINUOUS);
+                }
+
             }
         }
 
         /// <summary>keep the computer awake</summary>
         /// <param name="awakeMode">Away ==> Enable away mode ; Display ==> Keep the display on ; System ==> Do not sleep</param>
-        static int Main(AwakeMode awakeMode = AwakeMode.Display)
+        /// <param name="dryRun">Do not call SetThreadExecutionState but print intended call</param>
+        static int Main(AwakeMode awakeMode = AwakeMode.Display, bool dryRun = false)
         {
             switch(awakeMode)
             {
                 case AwakeMode.Away:
-                    SetMode(awakeMode, ExecutionState.ES_AWAYMODE_REQUIRED);
+                    SetMode(awakeMode, ExecutionState.ES_AWAYMODE_REQUIRED, dryRun);
                     break;
                 case AwakeMode.Display:
-                    SetMode(awakeMode, ExecutionState.ES_DISPLAY_REQUIRED);
+                    SetMode(awakeMode, ExecutionState.ES_DISPLAY_REQUIRED, dryRun);
                     break;
                 case AwakeMode.System:
-                    SetMode(awakeMode, ExecutionState.ES_SYSTEM_REQUIRED);
+                    SetMode(awakeMode, ExecutionState.ES_SYSTEM_REQUIRED, dryRun);
                     break;
                 default:
                     Console.WriteLine("Awake mode has not been set.");
