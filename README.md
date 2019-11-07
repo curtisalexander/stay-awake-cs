@@ -29,17 +29,18 @@ Other planned experiments include:
 ### Requirements
 Built with [.NET Core 3](https://dotnet.microsoft.com/download/dotnet-core/3.0).
 
-Version information compiled using [versions.ps1](https://github.com/curtisalexander/stayawake/blob/master/versions.ps1) script.
+Version information compiled using [versions.ps1](https://github.com/curtisalexander/stay-awake/blob/master/versions.ps1) script.
 
 ```
-Windows version: 10.0.19008.0
+Windows version: 10.0.19013.0
 
-dotnet core version: 3.1.100-preview1-014459
+dotnet core version: 3.1.100-preview2-014569
 
 Package versions:
-Project 'stayawake' has the following package references
+Project 'stay-awake' has the following package references
    [netcoreapp3.1]:
-   Top-level Package                     Requested             Resolved
+   Top-level Package                     Requested
+ Resolved
    > System.CommandLine.DragonFruit      0.3.0-alpha.19405.1   0.3.0-alpha.19405.1
 ```
 
@@ -48,7 +49,7 @@ Project 'stayawake' has the following package references
 Create a new project.
 
 ```pwsh
-dotnet new console -o stayawake
+dotnet new console -o stay-awake
 ```
 
 Add dependency for [System.CommandLine.DragonFruit](https://www.nuget.org/packages/System.CommandLine.DragonFruit).
@@ -85,7 +86,7 @@ powercfg -requests
 
 #### Publish
 
-For a single file exe, add the following to the `stayawake.csproj` file.
+For a single file exe, add the following to the `stay-awake.csproj` file.
 
 ```xml
 <PropertyGroup>
@@ -94,7 +95,7 @@ For a single file exe, add the following to the `stayawake.csproj` file.
 </PropertyGroup>
 ```
 
-For assembly linking, add the following to the `stayawake.csproj` file.
+For assembly linking, add the following to the `stay-awake.csproj` file.
 
 ```xml
 <PropertyGroup>
@@ -102,7 +103,7 @@ For assembly linking, add the following to the `stayawake.csproj` file.
 </PropertyGroup>
 ```
 
-For a ReadyToRun image, add the following to the `stayawake.csproj` file.
+For a ReadyToRun image, add the following to the `stay-awake.csproj` file.
 
 ```xml
 <PropertyGroup>
@@ -119,17 +120,17 @@ dotnet publish -c Release
 To test the exe, run the following.
 
 ```pwsh
-.\bin\Release\netcoreapp3.1\win10-x64\stayawake.exe --help
+.\bin\Release\netcoreapp3.1\win10-x64\stay-awake.exe --help
 ```
 
 Finally, to check the size of the exe, run the following.
 
 ```pwsh
 # In KB
-(Get-ChildItem -File .\bin\Release\netcoreapp3.1\win10-x64\stayawake.exe).Length/1KB
+(Get-ChildItem -File .\bin\Release\netcoreapp3.1\win10-x64\stay-awake.exe).Length/1KB
 
 # In MB
-(Get-ChildItem -File .\bin\Release\netcoreapp3.1\win10-x64\stayawake.exe).Length/1KB
+(Get-ChildItem -File .\bin\Release\netcoreapp3.1\win10-x64\stay-awake.exe).Length/1MB
 ```
 
 ### References
