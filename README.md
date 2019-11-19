@@ -86,7 +86,7 @@ powercfg -requests
 
 #### Publish
 
-For a single file exe, add the following to the `stay-awake.csproj` file.
+To produce a single file exe, add the following to the `stay-awake.csproj` file.
 
 ```xml
 <PropertyGroup>
@@ -131,6 +131,40 @@ Finally, to check the size of the exe, run the following.
 
 # In MB
 (Get-ChildItem -File .\bin\Release\netcoreapp3.1\win10-x64\stay-awake.exe).Length/1MB
+```
+
+#### Local Tool
+
+To produce a package for use as a [dotnet tool](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-tool-install), update the `csproj` file by adding the following.
+
+```xml
+<PackAsTool>true</PackAsTool>
+<ToolCommandName>stay-awake</ToolCommandName>
+<PackageOutputPath>./nupkg</PackageOutputPath>
+```
+
+Next, create a NuGet package (the configuration doesn't really matter at this point).
+
+```
+dotnet pack -c Release
+```
+
+Install as a global tool on your system.
+
+```
+dotnet tool install stay-awake --add-source ./ --global
+```
+
+Update as a global tool on your system.
+
+```pwsh
+dotnet tool update stay-awake --add-source ./ --global
+```
+
+To run, add the directory `C:\Users\myusername\.dotnet\tools` to your `PATH`.  Finally, run the tool!
+
+```pwsh
+stay-awake.exe --help
 ```
 
 ### References

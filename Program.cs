@@ -49,7 +49,7 @@ namespace stay_awake
             }
             finally
             {
-                Console.WriteLine("Stopping stayawake");
+                Console.WriteLine("Stopping stay-awake");
 
                 if (dRun)
                 {
