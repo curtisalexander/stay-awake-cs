@@ -1,4 +1,4 @@
-# stay-awake
+# stay-awake-cs
 
 Keep a Windows computer awake using the [win32 API](https://docs.microsoft.com/en-us/windows/win32/apiindex/windows-api-list).
 
