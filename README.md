@@ -78,7 +78,7 @@ dotnet run -- --awake-mode Display
 
 #### Test
 
-In order to test, open PowerShell with elevated (admin) privleges.  After executing the program, run the following.
+In order to test, open PowerShell with elevated (admin) privileges.  After executing the program, run the following.
 
 ```pwsh
 powercfg -requests
